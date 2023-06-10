@@ -1,12 +1,20 @@
-const refs = {
-  input: document.querySelector("login-form.name"),
-  password: document.querySelector("login-form.password"),
-  button: document.querySelector("login-form.button"),
-};
+const loginForm = document.querySelector(".login-form");
 
-function handleFormSubmit(event) {
+loginForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  console.log("Отправка!");
-}
 
-refs.button.addEventListener("submit", handleFormSubmit);
+  const email = loginForm.email.value;
+  const password = loginForm.password.value;
+
+  if (email === "" || password === "") {
+    alert("Пожалуйста, заполните все поля.");
+  } else {
+    const formData = {
+      email: email,
+      password: password,
+    };
+    console.log(formData);
+
+    loginForm.reset();
+  }
+});
